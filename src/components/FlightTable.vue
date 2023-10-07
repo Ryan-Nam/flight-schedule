@@ -13,6 +13,9 @@
             </tr>
         </thead>
         <tbody>
+            <tr v-if="flights.length === 0">
+                <td colspan="8">No flight Available</td>
+            </tr>
             <tr v-for="flight in flights" :key="flight.flight_iata">
                 <td>{{ flight.airline_iata ?? 'N/A' }}</td>
                 <td>{{ flight.flight_iata ?? 'N/A' }}</td>
@@ -74,29 +77,36 @@ export default {
 .table td {
     vertical-align: middle;
 }
+
 thead th:nth-child(1) {
     width: 10%;
 }
+
 thead th:nth-child(2) {
     width: 12.5%;
 }
+
 thead th:nth-child(3) {
     width: 10%;
 }
+
 thead th:nth-child(4) {
     width: 13%;
 }
+
 thead th:nth-child(5) {
     width: 10%;
 }
+
 thead th:nth-child(6) {
     width: 13%;
 }
+
 thead th:nth-child(7) {
     width: 15%;
 }
+
 thead th:nth-child(8) {
     width: 14.5%;
-}
-</style>
+}</style>
   
