@@ -2,8 +2,16 @@
   <SearchBar v-model:query="searchQuery" />
   <AirportSelect :airports="airports" v-model:value="selectedAirport" />
   <CategorySelect v-model:current="currentCategory" @fetch="fetchFlights" />
-  <FlightTable :flights="paginatedFlights" @show="showDetails" @navigate="moveToPage" />
-  <Pagination :currentPage="currentPage" :totalPages="totalPages" @changePage="handlePageChange" />
+
+
+  <div v-if="isLoading">
+    <Loading :active.sync="isLoading" :is-full-page="false" loader="dots" color="#000"></Loading>
+  </div>
+
+  <div v-else>
+    <FlightTable :flights="paginatedFlights" @show="showDetails" @navigate="moveToPage" />
+    <Pagination :currentPage="currentPage" :totalPages="totalPages" @changePage="handlePageChange" />
+  </div>
   <Modal :flight="selectedFlight" :category="currentCategory" @close="closeDetails" />
 </template>
 
@@ -37,6 +45,9 @@ export default {
   },
 
   setup() {
+    const isLoading = ref(false);
+
+
     const $route = useRoute();
     const $router = useRouter();
     const handleOutsideClick = () => {
@@ -128,6 +139,8 @@ export default {
     const flights = ref([]);
 
     const fetchFlights = async (type) => {
+      // Loading start
+      isLoading.value = true;
       // set the current category
       currentCategory.value = type;
       try {
@@ -141,6 +154,9 @@ export default {
         flights.value = response.data.response;
       } catch (error) {
         console.error("Error fetching flights:", error);
+      } finally {
+        // Loading completed 
+        isLoading.value = false;
       }
     };
 
@@ -195,6 +211,7 @@ export default {
     });
 
     return {
+      isLoading,
       handleOutsideClick,
       currentCategory,
       airports,

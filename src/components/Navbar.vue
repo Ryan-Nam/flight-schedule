@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="navbar-content">
-      <router-link class="navbar-brand" to="/">Flights Schedule</router-link>
+      <!-- In order to occur reload -->
+      <!-- <router-link class="navbar-brand" to="/">Flights Schedule</router-link> -->
+      <a class="navbar-brand" href="/">Flights Schedule</a>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link class="nav-link" to="/flightdetails">Documentation</router-link>

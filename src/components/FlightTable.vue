@@ -108,5 +108,11 @@ thead th:nth-child(7) {
 
 thead th:nth-child(8) {
     width: 14.5%;
-}</style>
+}
+
+.flight-table-container {
+  position: relative; 
+}
+
+</style>
   

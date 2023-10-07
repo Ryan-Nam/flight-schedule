@@ -116,6 +116,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 100;
 }
 .flight-details-content {
     background: #fff;
