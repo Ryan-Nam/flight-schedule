@@ -123,10 +123,15 @@ export default {
     const itemsPerPage = ref(8);
     const currentPage = ref(1);
 
-    // searchQuery 값이 변경될 때마다 currentPage를 1로 초기화
-  watch(searchQuery, () => {
-    currentPage.value = 1;
-  });
+    // when searchQuery is changed. init currentPage to 1
+    watch(searchQuery, () => {
+      currentPage.value = 1;
+    });
+
+    // when currentCategory is changed. init currentPage to 1
+    // watch(currentCategory, () => {
+    //   currentPage.value = 1;
+    // });
 
     const totalPages = computed(() => {
       return Math.ceil(filteredFlights.value.length / itemsPerPage.value);
