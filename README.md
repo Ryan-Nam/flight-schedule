@@ -40,4 +40,8 @@ The interface is designed to be user-friendly. Colors indicate flight status, an
 
 Every project is a learning opportunity. This project highlighted the importance of being adaptable, always improving, and the value of continuous learning in the tech world.
 
+## 📓 Documentation & Approach
 
+Here is my documentation link which shows how I approached and solved the challenges in this project:
+
+**[View My Project Documentation & Approach](https://ryannam.notion.site/Ovatu-Project-5dc0a4944b6b48deab46fc4a5f6d00a0?pvs=4)**
