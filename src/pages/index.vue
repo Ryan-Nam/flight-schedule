@@ -5,7 +5,7 @@
 
 
   <div v-if="isLoading">
-    <Loading :active.sync="isLoading" :is-full-page="false" loader="dots" color="#000"></Loading>
+    <Loading :active.sync="isLoading" loader="dots" color="#000"></Loading>
   </div>
 
   <div v-else>
@@ -161,11 +161,11 @@ export default {
     };
 
     // init state based on query parameters
-    const initializeStateFromQuery = () => {
+    const initializeStateFromQuery = (fetchRequired = true) => {
       if ($route.query.airport) {
         selectedAirport.value = $route.query.airport;
       }
-      if ($route.query.category) {
+      if ($route.query.category && fetchRequired) {
         currentCategory.value = $route.query.category;
         fetchFlights($route.query.category);
       }
@@ -177,7 +177,8 @@ export default {
 
     watch(() => $route.query, () => {
       // watch query parameters change
-      initializeStateFromQuery();
+      const fetchRequired = $route.query.category !== currentCategory.value;
+      initializeStateFromQuery(fetchRequired);
     });
 
     // update url, when major airport is changed
