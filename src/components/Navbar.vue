@@ -6,7 +6,7 @@
       <a class="navbar-brand" href="/">Flights Schedule</a>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link class="nav-link" to="/flightdetails">Documentation</router-link>
+          <a class="nav-link"  href="https://ryannam.notion.site/Ovatu-Project-5dc0a4944b6b48deab46fc4a5f6d00a0?pvs=4" target="_blank">Documentation</a>
         </li>
       </ul>
     </div>
@@ -26,4 +26,5 @@ export default {
   justify-content: space-between;
   width: 100%;
 }
+
 </style>

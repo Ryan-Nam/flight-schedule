@@ -17,9 +17,9 @@
 
 <script>
 import axios from "axios";
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import { useRouter, useRoute } from 'vue-router';
-import { watch } from "vue";
+
 
 // components
 import SearchBar from "@/components/SearchBar.vue";
@@ -122,6 +122,11 @@ export default {
     // For Pagination
     const itemsPerPage = ref(8);
     const currentPage = ref(1);
+
+    // searchQuery 값이 변경될 때마다 currentPage를 1로 초기화
+  watch(searchQuery, () => {
+    currentPage.value = 1;
+  });
 
     const totalPages = computed(() => {
       return Math.ceil(filteredFlights.value.length / itemsPerPage.value);
